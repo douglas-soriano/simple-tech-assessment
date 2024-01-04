@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('fund_manager_fund', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->string('api_token', 80)->unique()->nullable();
-            $table->rememberToken();
+            $table->foreignId('fund_id')->constrained(table: 'funds', indexName: 'fund_manager_funds_ids');
+            $table->foreignId('fund_manager_id')->constrained(table: 'funds_managers', indexName: 'fund_manager_fund_managers_ids');
             $table->timestamps();
         });
     }
@@ -28,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('fund_manager_fund');
     }
 };

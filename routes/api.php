@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\FundController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware(['throttle:60,1'])->group(function () {
+
+    Route::prefix('funds')->group(function () {
+        Route::get('/potential-duplicates', [FundController::class, 'getPotentialDuplicates']);
+        Route::get('/', [FundController::class, 'index']);
+        Route::get('/{fund_id}', [FundController::class, 'show']);
+        Route::put('/{fund_id}', [FundController::class, 'update']);
+    });
+
 });

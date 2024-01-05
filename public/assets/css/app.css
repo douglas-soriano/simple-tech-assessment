@@ -1,0 +1,208 @@
+/** PAGE CONFIG **/
+body {
+    height: 100vh;
+    paddding: 20px;
+    color: #293054;
+    background-color: #eef7fe;
+    line-height: 1;
+}
+.container {
+    height: 100%;
+}
+
+/** APP **/
+
+.links a {
+    font-size: 12px;
+    color: #000;
+}
+
+.logo {
+    text-align: center;
+}
+.logo img {
+    max-width: 200px;
+}
+.card {
+    background: #fff;
+    margin: auto;
+    border-radius: 5px;
+    width: 360px;
+    border: none;
+}
+.card .card-header {
+    padding: 20px;
+    border-bottom: 1px solid #EDEDED;
+    background: #293054;
+    color: #FFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-size: 16px;
+}
+.card .card-footer {
+    padding: 20px;
+    border-top: 1px solid #EDEDED;
+    background: #FFF;
+}
+
+.search-wrapper {
+    border-bottom: 1px solid #EDEDED;
+}
+.search-wrapper .search-area {
+    position: relative;
+}
+.search-wrapper .search-area .search-icon {
+    width: 16px;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    left: 15px;
+}
+.search-wrapper .search-area .search-form {
+    width: 100%;
+    transition: box-shadow 0.2s;
+    border: 1px solid #EDEDED;
+    padding: 14px 14px 14px 40px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+.funds-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 340px;
+    overflow-y: auto;
+}
+.funds-list li {
+    border-bottom: 1px solid #EDEDED;
+    transition: 500ms;
+    background: #FFF;
+}
+.funds-list li:hover {
+    background: #f4f7f9;
+}
+.funds-list li:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+.funds-list li h2 {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+.funds-list li p {
+    font-size: 14px;
+    color: #979292;
+    margin-bottom: 0;
+}
+.funds-list li .manager {
+    font-size: 12px;
+}
+.funds-list li .fund-name {
+    text-transform: capitalize;
+}
+.funds-list li .year {
+    font-size: 12px;
+}
+.funds-list li .alias {
+    font-size: 10px;
+    background: #DDD;
+    padding: 1px 4px 2px;
+    line-height: 1;
+    border-radius: 8px;
+    display: inline-block;
+    margin: 1px 2px 1px;
+}
+
+/** BOOTSTRAP CUSTOM **/
+
+.btn-teal {
+    font-weight: 600;
+    color: #fff;
+    background-color: #00b1b1 !important;
+    border-color: #00b1b1 !important;
+}
+
+/** LOADER **/
+
+.loader-bars {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    height: 40px;
+}
+.loader-bars .loader-bar {
+    width: 4px;
+    height: 100%;
+    margin-right: 4px;
+    border-radius: 200px;
+    -webkit-transform: scaleY(.2);
+    transform: scaleY(.2);
+    -webkit-animation: loader-bars .5s ease-in infinite alternate;
+    animation: loader-bars .5s ease-in infinite alternate;
+}
+.loader-bars .loader-bar:last-child {
+    margin-right: 0;
+}
+.loader-bars .loader-bar:first-child {
+    background-color: #615dfa;
+}
+.loader-bars .loader-bar:nth-child(2) {
+    background-color: #5d71fb;
+    -webkit-animation-delay: .1s;
+    animation-delay: .1s;
+}
+.loader-bars .loader-bar:nth-child(3) {
+    background-color: #5983fb;
+    -webkit-animation-delay: .2s;
+    animation-delay: .2s;
+}
+.loader-bars .loader-bar:nth-child(4) {
+    background-color: #549afc;
+    -webkit-animation-delay: .3s;
+    animation-delay: .3s;
+}
+.loader-bars .loader-bar:nth-child(5) {
+    background-color: #4eb2fd;
+    -webkit-animation-delay: .4s;
+    animation-delay: .4s;
+}
+.loader-bars .loader-bar:nth-child(6) {
+    background-color: #49c9fe;
+    -webkit-animation-delay: .5s;
+    animation-delay: .5s;
+}
+.loader-bars .loader-bar:nth-child(7) {
+    background-color: #45ddfe;
+    -webkit-animation-delay: .6s;
+    animation-delay: .6s;
+}
+.loader-bars .loader-bar:nth-child(8) {
+    background-color: #41efff;
+    -webkit-animation-delay: .7s;
+    animation-delay: .7s;
+}
+
+@-webkit-keyframes loader-bars {
+    0% {
+        -webkit-transform: scaleY(.2);
+        transform: scaleY(.2);
+    }
+    to {
+        -webkit-transform: scaleY(1);
+        transform: scaleY(1);
+    }
+}
+@keyframes loader-bars {
+    0% {
+        -webkit-transform: scaleY(.2);
+        transform: scaleY(.2);
+    }
+    to {
+        -webkit-transform: scaleY(1);
+        transform: scaleY(1);
+    }
+}

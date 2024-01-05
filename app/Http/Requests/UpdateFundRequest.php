@@ -21,7 +21,7 @@ class UpdateFundRequest extends FormRequest
     {
         return [
             'name' => 'sometimes|string|max:255',
-            'start_year' => 'sometimes|date',
+            'start_year' => 'sometimes|digits:4|integer',
             'fund_manager_id' => 'sometimes|exists:funds_managers,id',
             'aliases' => 'sometimes|array'
         ];

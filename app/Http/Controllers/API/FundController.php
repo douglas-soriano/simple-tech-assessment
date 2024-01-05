@@ -46,7 +46,7 @@ class FundController extends Controller
 
             # Filter :: by start date
             if (request()->filled('start_year')) {
-                $query->whereDate('start_year', request()->input('start_year'));
+                $query->where('start_year', request()->input('start_year'));
             }
 
             $funds = $query->with('fundManager.company', 'aliases')->simplePaginate(10);

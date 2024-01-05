@@ -13,11 +13,9 @@ return new class extends Migration
     {
         Schema::create('funds', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->date('start_year');
+            $table->string('name')->index();
+            $table->integer('start_year')->index();
             $table->timestamps();
-
-            $table->index(['name', 'start_year']);
         });
     }
 

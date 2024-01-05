@@ -13,7 +13,7 @@ class FundFactory extends Factory
     {
         return [
             'name' => $this->faker->word,
-            'start_year' => $this->faker->date
+            'start_year' => $this->faker->year
         ];
     }
 }

@@ -1,66 +1,137 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Canoe Tech Assessment @ Remotely
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This is an assessment for a job opportunity at Canoe, emphasizing the creation of a data model and a backend service. My solution, developed using ```Laravel (PHP)```, ```VueJS (JavaScript)```, and ```MySQL```, allows fund managers to manually view and update fund records. Additionally, I addressed the challenge of handling duplicate records. Plus, I added a simple frontend to make it look good.
 
-## About Laravel
+## Table of Contents
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- [Overview](#overview)
+- [Installation](#installation)
+- [ER Diagram](#er-diagram)
+- [API Endpoints](#api-endpoints)
+  - [1. Get Potential Duplicates](#1-get-potential-duplicates)
+  - [2. Get List of Funds](#2-get-list-of-funds)
+  - [3. Get Fund Details](#3-get-fund-details)
+  - [4. Update Fund Information](#4-update-fund-information)
+- [Tests and Commands](#tests-and-commands)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Overview
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+There are two ways to test the API endpoints:
 
-## Learning Laravel
+**1. Online Method**
+```
+APP: https://douglas.a8brands.com/
+API: https://douglas.a8brands.com/api/funds
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+**2. Local Method**
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Given that this application was developed using Laravel, you can clone this repository and install it on your local machine. To do this, navigate to the [installation section](#instalation).
+Running the application locally offers the advantage of executing some [custom commands and unit tests](#tests-and-commands) that I have implemented.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+## Installation
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Follow these steps to set up and run this Laravel application:
 
-### Premium Partners
+**1. Clone the Repository:**
+    ```
+    git clone https://douglas_soriano@bitbucket.org/douglas_soriano/canoe-tech-assessment.git .
+    ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+**2. Install Composer Dependencies:**
+    ```
+    composer install
+    ```
 
-## Contributing
+**3. Create Environment File:**
+    ```
+    cp .env.example .env
+    ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+    Configure the DB variables: DB_DATABASE, DB_USERNAME, DB_PASSWORD.
 
-## Code of Conduct
+**4. Generate Application Key:**
+    ```
+    php artisan key:generate
+    ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+**5. Run Migrations:**
+    ```
+    php artisan migrate
+    ```
 
-## Security Vulnerabilities
+**6. Start the Development Server:**
+    ```
+    php artisan serve
+    ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+**7. Access the API Endpoints:**
+    ```
+    http://localhost:8000/api
+    ```
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## ER Diagram
+
+You can find the Entity Relationship (ER) Diagram used for this application at the following link:
+```
+https://miro.com/app/board/uXjVN9_xdHM=/?share_link_id=659916370064
+```
+
+
+## API Endpoints
+
+### 1. Get Potential Duplicates
+
+- **Description:** Retrieve a list of potentially duplicated funds.
+- **Endpoint:** `/api/funds/potential-duplicates`
+- **Method:** `GET`
+- **Parameters:**
+  - None
+
+### 2. Get List of Funds
+
+- **Description:** Retrieve a list of funds based on specified parameters.
+- **Endpoint:** `/api/funds`
+- **Method:** `GET`
+- **Parameters:**
+  - `name` (optional): Filter funds by name.
+  - `start_year` (optional): Filter funds by start year.
+  - `fund_manager_id` (optional): Filter funds by fund manager ID.
+  - `fund_manager_name` (optional): Filter funds by fund manager name.
+
+### 3. Get Fund Details
+
+- **Description:** Retrieve details of a specific fund.
+- **Endpoint:** `/api/funds/{fund_id}`
+- **Method:** `GET`
+- **Parameters:**
+  - `fund_id` (required): ID of the fund to retrieve details.
+
+### 4. Update Fund Information
+
+- **Description:** Update information for a specific fund.
+- **Endpoint:** `/api/funds/{fund_id}`
+- **Method:** `PUT`
+- **Parameters:**
+  - `fund_id` (required): ID of the fund to update.
+  - `name` (optional): New name for the fund.
+  - `start_year` (optional): New start year for the fund.
+  - `fund_manager_id` (optional): New fund manager ID for the fund.
+  - `aliases` (optional): Array of new aliases for the fund. `['alias1', 'alias2']`
+
+
+
+## Tests and Commands
+
+In order to run our Unit Tests for all the endpoints on this application, simple use the following command:
+```
+php artisan test
+```
+It will erase all the database data and generate some records for testing purpose.
+
+You can also populate the database with dummy data using the following command:
+```
+php artisan dummy:populate 1000
+```

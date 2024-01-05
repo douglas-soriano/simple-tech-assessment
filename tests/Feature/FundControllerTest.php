@@ -58,7 +58,7 @@ class FundControllerTest extends TestCase
         # Create new fund
         $duplicate_fund = new Fund;
         $duplicate_fund->name = $duplicated_alias->title;
-        $duplicate_fund->start_year = '2023-10-10';
+        $duplicate_fund->start_year = '2023';
         $duplicate_fund->save();
 
         # Duplicate manager
@@ -130,7 +130,7 @@ class FundControllerTest extends TestCase
         $fund = Fund::factory()->hasFundManager()->hasAliases(3)->create();
         $response = $this->put('/api/funds/' . $fund->id, [
             'name' => 'Test Fund Name',
-            'start_year' => '2024-01-01',
+            'start_year' => '2024',
             'fund_manager_id' => \App\Models\FundManager::inRandomOrder()->first()->id,
             'aliases' => ['Test Name 1', 'Test Name 2']
         ]);

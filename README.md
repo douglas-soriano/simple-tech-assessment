@@ -2,6 +2,9 @@
 
 This is an assessment for a job opportunity at Canoe, emphasizing the creation of a data model and a backend service. My solution, developed using ```Laravel (PHP)```, ```VueJS (JavaScript)```, and ```MySQL```, allows fund managers to manually view and update fund records. Additionally, I addressed the challenge of handling duplicate records. Plus, I added a simple frontend to make it look good.
 
+**Requirements:**
+*```PHP >= 8.1```  is required, and you need to have a created ```database```. Also, dont forget to update your ```composer```.*
+
 ## Table of Contents
 
 - [Overview](#markdown-header-overview)
@@ -69,6 +72,11 @@ Follow these steps to set up and run this Laravel application:
 **7. Access the API Endpoints:**
     ```
     http://localhost:8000/api
+    ```
+
+**8. (Optional) Populate the Database:**
+    ```
+    php artisan dummy:populate 1000
     ```
 
 

@@ -34,23 +34,31 @@
                 <template v-else>
                     <ul v-if="!has_error" class="funds-list">
 
-                        <li v-for="fund in funds.data" class="px-4 py-3">
-                            <div class="row">
-                                <div class="col">
-                                    <h2 class="fund-name" v-text="fund.name" title="Fund Name"></h2>
+                        <template v-if="funds.data && funds.data.length">
+                            <li v-for="fund in funds.data" class="px-4 py-3">
+                                <div class="row">
+                                    <div class="col">
+                                        <h2 class="fund-name" v-text="fund.name" title="Fund Name"></h2>
+                                    </div>
+                                    <div class="col text-end" title="Start Year">
+                                        <p class="year" v-text="fund.start_year"></p>
+                                    </div>
                                 </div>
-                                <div class="col text-end" title="Start Year">
-                                    <p class="year" v-text="fund.start_year"></p>
+                                <div v-if="fund.aliases" class="aliases mb-1" title="Aliases">
+                                    <span v-for="alias in fund.aliases" class="alias" v-text="alias"></span>
                                 </div>
-                            </div>
-                            <div v-if="fund.aliases" class="aliases mb-1" title="Aliases">
-                                <span v-for="alias in fund.aliases" class="alias" v-text="alias"></span>
-                            </div>
-                            <div class="manager text-muted fst-italic" title="Manager @ Company">
-                                <img width="12" src="{{ asset('assets/images/icon-manager.svg') }}" alt="left" style="margin-top:-2px">
-                                <span v-text="fund.fund_manager ? limitText(fund.fund_manager.name + ' @ ' + fund.fund_manager.company_name, 40) : '(Fund without manager)'"></span>
-                            </div>
-                        </li>
+                                <div class="manager text-muted fst-italic" title="Manager @ Company">
+                                    <img width="12" src="{{ asset('assets/images/icon-manager.svg') }}" alt="left" style="margin-top:-2px">
+                                    <span v-text="fund.fund_manager ? limitText(fund.fund_manager.name + ' @ ' + fund.fund_manager.company_name, 40) : '(Fund without manager)'"></span>
+                                </div>
+                            </li>
+                        </template>
+
+                        <template v-else>
+                            <li class="p-3">
+                                <div class="alert alert-info text-center mb-0" style="font-size:13px;"><b>No funds to show.</b><br><br>Use "php artisan dummy:populate 1000" command to populate the database with dummy data.</div>
+                            </li>
+                        </template>
 
                     </ul>
                     <div class="p-3" v-else>
@@ -75,11 +83,9 @@
         </div>
 
         <div class="links text-center mt-3">
-            <a target="_blank" href="#">Documentation</a>
-            |
             <a target="_blank" href="https://miro.com/app/board/uXjVN9_xdHM=/?share_link_id=659916370064">ER Diagram</a>
             |
-            <a target="_blank" href="https://bitbucket.org/douglas_soriano/canoe-tech-assessment">Repository</a>
+            <a target="_blank" href="https://bitbucket.org/douglas_soriano/canoe-tech-assessment">Repository / Documentation</a>
         </div>
 
     </div>
@@ -108,7 +114,7 @@ var app = new Vue({
     },
     methods: {
 
-        // POST :: Salva alteração na solicitação
+        // GET :: Search for funds on API.
         getFunds () {
             var self = this;
 
@@ -135,7 +141,7 @@ var app = new Vue({
 
         },
 
-        //
+        // SEARCH :: Apply a timeout so it wont make so many requests.
         searchTimeout () {
             var self = this;
             if (self.search_timer) {
@@ -144,31 +150,38 @@ var app = new Vue({
             }
             self.search_timer = setTimeout(() => {
                 self.getFunds();
-            }, 500);
+            }, 300);
         },
 
-        // Próxima página dos resultados
+        // BUTTON :: Next page of datas.
         nextFundsPage () {
             var funds = this.funds;
             if (funds && funds.next_page_url) {
-                this.current_page = funds.next_page_url.replace(/\D/g, "");
+                this.current_page = this.getPageFromUrl(funds.next_page_url);
                 this.getFunds();
             }
         },
 
-        // Página anterior dos resultados
+        // BUTTON :: Previous page of datas.
         prevFundsPage () {
             var funds = this.funds;
             if (funds && funds.prev_page_url) {
-                this.current_page = funds.prev_page_url.replace(/\D/g, "");
+                this.current_page = this.getPageFromUrl(funds.prev_page_url);
                 this.getFunds();
             }
         },
 
-        //
+        // HELPER :: Limit text.
         limitText (str, limit = 30) {
             if(str.length > limit) str = str.substring(0, limit) + '...';
             return str;
+        },
+
+        // HELPER :: Get page number from url.
+        getPageFromUrl (url_string) {
+            var url = new URL(url_string);
+            var page = url.searchParams.get("page");
+            return page;
         }
 
 

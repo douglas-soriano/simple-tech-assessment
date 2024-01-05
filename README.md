@@ -4,15 +4,15 @@ This is an assessment for a job opportunity at Canoe, emphasizing the creation o
 
 ## Table of Contents
 
-- [Overview](#overview)
-- [Installation](#installation)
-- [ER Diagram](#er-diagram)
-- [API Endpoints](#api-endpoints)
-  - [1. Get Potential Duplicates](#1-get-potential-duplicates)
-  - [2. Get List of Funds](#2-get-list-of-funds)
-  - [3. Get Fund Details](#3-get-fund-details)
-  - [4. Update Fund Information](#4-update-fund-information)
-- [Tests and Commands](#tests-and-commands)
+- [Overview](#markdown-header-overview)
+- [Installation](#markdown-header-installation)
+- [ER Diagram](#markdown-header-er-diagram)
+- [API Endpoints](#markdown-header-api-endpoints)
+  - [1. Get Potential Duplicates](#markdown-header-1-get-potential-duplicates)
+  - [2. Get List of Funds](#markdown-header-2-get-list-of-funds)
+  - [3. Get Fund Details](#markdown-header-3-get-fund-details)
+  - [4. Update Fund Information](#markdown-header-4-update-fund-information)
+- [Tests and Commands](#markdown-header-tests-and-commands)
 
 ## Overview
 
@@ -26,8 +26,8 @@ API: https://douglas.a8brands.com/api/funds
 
 **2. Local Method**
 
-Given that this application was developed using Laravel, you can clone this repository and install it on your local machine. To do this, navigate to the [installation section](#instalation).
-Running the application locally offers the advantage of executing some [custom commands and unit tests](#tests-and-commands) that I have implemented.
+Given that this application was developed using Laravel, you can clone this repository and install it on your local machine. To do this, navigate to the [installation section](#markdown-header-instalation).
+Running the application locally offers the advantage of executing some [custom commands and unit tests](#markdown-header-tests-and-commands) that I have implemented.
 
 
 ## Installation

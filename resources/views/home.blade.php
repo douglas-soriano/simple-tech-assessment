@@ -4,10 +4,6 @@
 <div id="app" class="container d-flex align-items-center justify-content-center">
     <div>
 
-        <div class="logo mb-3">
-            <img src="{{ asset('assets/images/logo.svg') }}" alt="Canoe">
-        </div>
-
         <div class="card">
             <div class="card-header">
                 <div>
@@ -70,11 +66,11 @@
             <div class="card-footer px-4">
                 <div class="d-grid">
                     <div class="input-group">
-                        <button type="button" class="btn btn-teal px-4" v-on:click="prevFundsPage" v-bind:class="{ 'disabled': !funds.prev_page_url }">
+                        <button type="button" class="btn btn-teal px-4" v-on:click="prevFundsPage" v-bind:class="{ 'disabled': !funds.links.prev }">
                             <img width="16" src="{{ asset('assets/images/icon-arrow-left.svg') }}" alt="left" style="margin-top:-2px">
                         </button>
-                        <input type="text" class="form-control text-center bg-white border-0" v-model="funds.current_page" readonly disabled>
-                        <button type="button" class="btn btn-teal px-4" v-on:click="nextFundsPage" v-bind:class="{ 'disabled': !funds.next_page_url }">
+                        <input type="text" class="form-control text-center bg-white border-0" v-model="funds.meta.current_page" readonly disabled>
+                        <button type="button" class="btn btn-teal px-4" v-on:click="nextFundsPage" v-bind:class="{ 'disabled': !funds.links.next }">
                             <img width="16" src="{{ asset('assets/images/icon-arrow-right.svg') }}" alt="right" style="margin-top:-2px">
                         </button>
                     </div>
@@ -83,9 +79,7 @@
         </div>
 
         <div class="links text-center mt-3">
-            <a target="_blank" href="https://miro.com/app/board/uXjVN9_xdHM=/?share_link_id=659916370064">ER Diagram</a>
-            |
-            <a target="_blank" href="https://bitbucket.org/douglas_soriano/canoe-tech-assessment">Repository / Documentation</a>
+            <a target="_blank" href="https://github.com/douglas-soriano/simple-tech-assessment">Repository / Documentation</a>
         </div>
 
     </div>
@@ -106,7 +100,7 @@ var app = new Vue({
         is_loading: true,
         search_timer: null,
         search_term: null,
-        funds: {},
+        funds: [],
         current_page: 1
     },
     mounted: function () {
@@ -156,8 +150,8 @@ var app = new Vue({
         // BUTTON :: Next page of datas.
         nextFundsPage () {
             var funds = this.funds;
-            if (funds && funds.next_page_url) {
-                this.current_page = this.getPageFromUrl(funds.next_page_url);
+            if (funds && funds.links.next) {
+                this.current_page = this.getPageFromUrl(funds.links.next);
                 this.getFunds();
             }
         },
@@ -165,8 +159,8 @@ var app = new Vue({
         // BUTTON :: Previous page of datas.
         prevFundsPage () {
             var funds = this.funds;
-            if (funds && funds.prev_page_url) {
-                this.current_page = this.getPageFromUrl(funds.prev_page_url);
+            if (funds && funds.links.prev) {
+                this.current_page = this.getPageFromUrl(funds.links.prev);
                 this.getFunds();
             }
         },

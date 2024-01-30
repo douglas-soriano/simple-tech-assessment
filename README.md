@@ -1,43 +1,20 @@
-# Canoe Tech Assessment @ Remotely
+# Simple Tech Assessment @ Remotely
 
-This is an assessment for a job opportunity at Canoe, emphasizing the creation of a data model and a backend service.
+This is assessment consists on the creation of a data model and a backend service.
 My solution, developed using ```Laravel (PHP)```, ```VueJS (JavaScript)```, and ```MySQL```, allows fund managers to manually view and update fund records.
+
 Additionally, I addressed the challenge of handling duplicate records.
+
 Plus, I added a simple frontend to make it look good.
 
 **Requirements:**
 *```PHP >= 8.1```  is required, and you need to have a created ```database```. Also, dont forget to update your ```composer```.*
 
-## Table of Contents
-
-- [Overview](#markdown-header-overview)
-- [Installation](#markdown-header-installation)
-- [ER Diagram](#markdown-header-er-diagram)
-- [API Endpoints](#markdown-header-api-endpoints)
-  - [1. Get Potential Duplicates](#markdown-header-1-get-potential-duplicates)
-  - [2. Get List of Funds](#markdown-header-2-get-list-of-funds)
-  - [3. Get Fund Details](#markdown-header-3-get-fund-details)
-  - [4. Update Fund Information](#markdown-header-4-update-fund-information)
-- [Tests and Commands](#markdown-header-tests-and-commands)
-- [Technical Informations](#markdown-header-technical-informations)
-  - [Events](#markdown-header-events)
-  - [Scalability](#markdown-header-scalability)
-
 ## Overview
 
-There are two ways to test the API endpoints:
-
-**1. Online Method**
-```
-APP: https://douglas.a8brands.com/
-API: https://douglas.a8brands.com/api/funds
-```
-
-**2. Local Method**
-
 Given that this application was developed using Laravel, you can clone this repository and install it on your local machine.
-To do this, navigate to the [installation section](#markdown-header-instalation).
-Running the application locally offers the advantage of executing some [custom commands and unit tests](#markdown-header-tests-and-commands) that I have implemented.
+To do this, navigate to the [installation section](#header-instalation).
+Running the application locally offers the advantage of executing some [custom commands and unit tests](#header-tests-and-commands) that I have implemented.
 
 
 ## Installation
@@ -46,7 +23,7 @@ Follow these steps to set up and run this Laravel application:
 
 **1. Clone the Repository:**
     ```
-    git clone https://douglas_soriano@bitbucket.org/douglas_soriano/canoe-tech-assessment.git .
+    git clone https://github.com/douglas-soriano/simple-tech-assessment.git .
     ```
 
 **2. Install Composer Dependencies:**
@@ -61,15 +38,12 @@ Follow these steps to set up and run this Laravel application:
 
     Configure the DB variables: DB_DATABASE, DB_USERNAME, DB_PASSWORD.
 
-**4. Generate Application Key:**
+**4. Refresh Application:**
     ```
-    php artisan key:generate
+    php artisan app:refresh
     ```
 
-**5. Run Migrations:**
-    ```
-    php artisan migrate
-    ```
+    All migrations, seeders, keys and dummy data will be taken place.
 
 **6. Start the Development Server:**
     ```
@@ -81,18 +55,6 @@ Follow these steps to set up and run this Laravel application:
     http://localhost:8000/api
     ```
 
-**8. (Optional) Populate the Database:**
-    ```
-    php artisan dummy:populate 1000
-    ```
-
-
-## ER Diagram
-
-You can find the Entity Relationship (ER) Diagram used for this application at the following link:
-```
-https://miro.com/app/board/uXjVN9_xdHM=/?share_link_id=659916370064
-```
 
 
 ## API Endpoints
